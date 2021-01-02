@@ -44,7 +44,7 @@
 - Mount from `/etc/fstab`
 
   ```sh
-  mount -a
+  mount --all
   ```
 
 - List all partitions and their Universally Unique Identifier (UUID)
