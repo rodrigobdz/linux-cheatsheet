@@ -175,8 +175,8 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
   ```sh
   configure_swap_memory() {
-    local -r swap_file_path='/swapfile'
-    local -r swap_memory_size_in_gb='8'
+    local -r swap_file_path="$1"
+    local -r swap_memory_size_in_gb="$2"
 
     echo 'Disable all swap memory temporarily'
     swapoff --all
@@ -197,7 +197,7 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
     grep SwapTotal /proc/meminfo
   }
 
-  configure_swap_memory
+  configure_swap_memory '/swapfile' 8
   ```
 
 ## Git
