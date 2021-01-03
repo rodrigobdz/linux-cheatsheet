@@ -1,18 +1,23 @@
 # Linux Cheatsheet
 
-## Table of Contents
-
-1. Filesystem
-2. Peripherals
-3. System Resources
-4. Git
-5. Networking
-6. User Configuration
-7. Logs
-8. Docker
-9. System Services
-10. Yum
-11. Ubuntu
+- [Linux Cheatsheet](#linux-cheatsheet)
+  - [Filesystem](#filesystem)
+  - [Peripherals](#peripherals)
+    - [Further Reading](#further-reading)
+  - [System Resources](#system-resources)
+    - [Disk Space](#disk-space)
+    - [RAM](#ram)
+    - [Swap Memory](#swap-memory)
+  - [Git](#git)
+  - [Networking](#networking)
+    - [SSH](#ssh)
+  - [User configuration](#user-configuration)
+  - [Logs](#logs)
+  - [Docker](#docker)
+    - [Docker in Docker (dind)](#docker-in-docker-dind)
+  - [System Services](#system-services)
+  - [Yum](#yum)
+  - [Ubuntu](#ubuntu)
 
 ## Filesystem
 
