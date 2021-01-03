@@ -16,6 +16,12 @@
 
 ## Filesystem
 
+- Filesystem Hierarchy Standard (FHS)
+
+  > The Filesystem Hierarchy Standard (FHS) defines the directory structure and directory contents in Linux distributions. [Source](https://en.m.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
+
+---
+
 - List 5 largest files in folder and sort by size
 
   ```sh
@@ -250,12 +256,19 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 - Set locale
 
   > perl: warning: Setting locale failed.
+  >
   > perl: warning: Please check that your locale settings:
+  >
   > LANGUAGE = (unset),
+  >
   > LC_ALL = (unset),
+  >
   > LC_CTYPE = "UTF-8",
+  >
   > LANG = "en_US.UTF-8"
+  >
   > are supported and installed on your system.
+  >
   > perl: warning: Falling back to the standard locale ("C").
 
   Append the following lines to `~/.bashrc`:
