@@ -1,5 +1,11 @@
 # Linux Cheatsheet
 
+**Highly recommended:** [tldr-pages/tldr](https://github.com/tldr-pages/tldr) ([website](https://tldr.sh))
+
+> collection of community-maintained help pages for command-line tools, that aims to be a simpler, more approachable complement to traditional man pages.
+
+---
+
 - [Linux Cheatsheet](#linux-cheatsheet)
   - [Filesystem](#filesystem)
   - [Peripherals](#peripherals)
