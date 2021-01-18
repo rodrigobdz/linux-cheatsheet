@@ -164,6 +164,14 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 ## System Resources
 
+### Default editor
+
+- Set default editor for `sudo systemctl edit --full SERVICE_NAME`
+
+  ```sh
+  sudo update-alternatives --config editor
+  ```
+
 ### Disk Space
 
 - Check available disk space
