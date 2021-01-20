@@ -11,6 +11,7 @@
   - [Peripherals](#peripherals)
     - [Further Reading](#further-reading)
   - [System Resources](#system-resources)
+    - [Default editor](#default-editor)
     - [Disk Space](#disk-space)
     - [RAM](#ram)
     - [Swap Memory](#swap-memory)
@@ -71,6 +72,8 @@
   ```
 
 ## Peripherals
+
+- Cheatsheet from `opensource.com`: [Linux commands to display your hardware information](https://opensource.com/article/19/9/linux-commands-hardware-information)
 
 As a general rule device shown in `/dev/sd*` are storage devices as opposed to the ones shown in `/dev/bus`.
 
@@ -241,14 +244,14 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
   ```sh
   sudo systemctl status network
-  sudo vim /etc/sysconfig/network-scripts/ifcfg-eth0
+  sudo editor /etc/sysconfig/network-scripts/ifcfg-eth0
   # Set ONBOOT=yes for desired network
   ```
 
 - Set DNS server
 
   ```sh
-  vim /etc/resolv.conf
+  editor /etc/resolv.conf
   # Add DNS server
   #   Example:
   #     nameserver 8.8.8.8
@@ -370,6 +373,17 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 
 ## Ubuntu
 
+- Unattended reboot
+
+  ```sh
+  sudo editor /etc/gdm3/custom.conf
+
+  # Uncomment the following lines and change user1 to the value of $USER:
+  #   AutomaticLoginEnable = true
+  #   AutomaticLogin = user1
+  ```
+
+- [Debian Unattended Upgrades](https://wiki.debian.org/UnattendedUpgrades)
 - Reinstall Unity on Ubuntu
 
   ```sh
