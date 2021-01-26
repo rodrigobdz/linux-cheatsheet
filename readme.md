@@ -273,6 +273,13 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   ssh-keygen -f "~/.ssh/known_hosts" -R <IP_ADDRESS>
   ```
 
+- [SSH Message Numbers](https://www.iana.org/assignments/ssh-parameters/ssh-parameters.xhtml#ssh-parameters-1)
+
+  Examples:
+  
+  > send packet: type 50
+  > receive packet: type 51
+
 ## User configuration
 
 - Set locale
