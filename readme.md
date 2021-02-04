@@ -25,6 +25,31 @@
   - [System Services](#system-services)
   - [Yum](#yum)
   - [Ubuntu](#ubuntu)
+  
+## Env vars
+
+- Given a file named `example.env` with contents:
+
+  ```sh
+  a='jane'
+  b='john'
+  c='doe'
+  ```
+  
+    - Source all variables:
+  
+      ```sh
+      source example.env
+      ```
+  
+    - Export all variables in file
+    
+      ```sh
+      # After sourcing all variables, we can export them
+      export $(cut --delimiter= --fields=1 example.env)
+      ```
+      
+      [Source](https://unix.stackexchange.com/a/79065)
 
 ## Filesystem
 
