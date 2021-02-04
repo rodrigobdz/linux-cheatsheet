@@ -382,6 +382,16 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   systemctl cat SERVICE_NAME.service
   ```
 
+## Parallel
+
+- Run command in parallel using GNU parallel
+
+  ```sh
+  parallel --halt-on-error now,fail=1 'set -o errexit; set -o pipefail; set -o nounset; echo {}' ::: 1 2 3'
+  ```
+  
+  [Parallel manual](https://www.gnu.org/software/parallel/parallel_tutorial.html)
+
 ## Yum
 
 - [Yum Command Cheat Sheet](https://access.redhat.com/sites/default/files/attachments/rh_yum_cheatsheet_1214_jcs_print-1.pdf)
