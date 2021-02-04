@@ -238,6 +238,14 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
   [Source](https://stackoverflow.com/questions/9456550/how-to-find-the-n-largest-files-in-a-git-repository/46085465#46085465)
 
+- Git pull all repos in a directory
+
+  ```sh
+  find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull \;
+  ```
+  
+  [Source](https://stackoverflow.com/a/12495234/2227405)
+
 ## Networking
 
 - Connect to network on interface `eth0` on boot
