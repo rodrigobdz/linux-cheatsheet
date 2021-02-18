@@ -218,12 +218,16 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 ### Swap Memory
 
-- Configure swap memory
+- Configure swap memory (run as `root` user)
 
   ```sh
   configure_swap_memory() {
     local -r swap_file_path="$1"
     local -r swap_memory_size_in_gb="$2"
+    
+    set -o errexit
+    set -o pipefail
+    set -o nounset
 
     echo 'Disable all swap memory temporarily'
     swapoff --all
