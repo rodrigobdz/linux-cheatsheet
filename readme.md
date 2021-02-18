@@ -247,6 +247,8 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   configure_swap_memory '/swapfile' 8
   ```
 
+- [Recommended size of swap space](https://opensource.com/article/18/9/swap-space-linux-systems)
+
 ## Git
 
 - List biggest files in `.git` folder
