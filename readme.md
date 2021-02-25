@@ -25,7 +25,7 @@
   - [System Services](#system-services)
   - [Yum](#yum)
   - [Ubuntu](#ubuntu)
-  
+
 ## Env vars
 
 - Given a file named `example.env` with contents:
@@ -35,21 +35,21 @@
   b='john'
   c='doe'
   ```
-  
-    - Source all variables:
-  
-      ```sh
-      source example.env
-      ```
-  
-    - Export all variables in file
-    
-      ```sh
-      # After sourcing all variables, we can export them
-      export $(cut --delimiter= --fields=1 example.env)
-      ```
-      
-      [Source](https://unix.stackexchange.com/a/79065)
+
+  - Source all variables:
+
+    ```sh
+    source example.env
+    ```
+
+  - Export all variables in file
+
+    ```sh
+    # After sourcing all variables, we can export them
+    export $(cut --delimiter= --fields=1 example.env)
+    ```
+
+    [Source](https://unix.stackexchange.com/a/79065)
 
 ## Filesystem
 
@@ -224,7 +224,7 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   configure_swap_memory() {
     local -r swap_file_path="$1"
     local -r swap_memory_size_in_gb="$2"
-    
+
     set -o errexit
     set -o pipefail
     set -o nounset
@@ -274,7 +274,7 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   ```sh
   find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull \;
   ```
-  
+
   [Source](https://stackoverflow.com/a/12495234/2227405)
 
 ## Networking
@@ -315,7 +315,7 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 - [SSH Message Numbers](https://www.iana.org/assignments/ssh-parameters/ssh-parameters.xhtml#ssh-parameters-1)
 
   Examples:
-  
+
   > send packet: type 50
   > receive packet: type 51
 
@@ -420,7 +420,7 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   ```sh
   parallel --halt-on-error now,fail=1 'set -o errexit; set -o pipefail; set -o nounset; echo {}' ::: 1 2 3'
   ```
-  
+
   [Parallel manual](https://www.gnu.org/software/parallel/parallel_tutorial.html)
 
 ## Yum
