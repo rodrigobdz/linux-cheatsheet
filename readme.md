@@ -97,6 +97,13 @@
   sudo blkid
   ```
 
+- Create sequence of numbered directories
+
+  ```sh
+  # Creates directories 1/ ... 10/
+  mkdir -p $(seq 1 10)
+  ```
+
 ## Peripherals
 
 - Cheatsheet from `opensource.com`: [Linux commands to display your hardware information](https://opensource.com/article/19/9/linux-commands-hardware-information)
