@@ -7,6 +7,7 @@
 ---
 
 - [Linux Cheatsheet](#linux-cheatsheet)
+  - [Env vars](#env-vars)
   - [Filesystem](#filesystem)
   - [Peripherals](#peripherals)
     - [Further Reading](#further-reading)
