@@ -499,3 +499,11 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   ```sh
   ocrmypdf --force-ocr input.pdf output.pdf
   ```
+
+- Merge PDFs
+
+  ```sh
+  "/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py" -o merged.pdf *.pdf
+  ```
+
+  [Source](https://apple.stackexchange.com/a/230447)
