@@ -24,8 +24,10 @@
   - [Docker](#docker)
     - [Docker in Docker (dind)](#docker-in-docker-dind)
   - [System Services](#system-services)
+  - [Parallel](#parallel)
   - [Yum](#yum)
   - [Ubuntu](#ubuntu)
+  - [Image Manipulation](#image-manipulation)
 
 ## Env vars
 
@@ -466,3 +468,25 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   ```
 
   [Source](https://superuser.com/a/1277604)
+
+## Image Manipulation
+
+[Source](https://tldr.ostera.io/convert)
+
+- Horizontally append images
+
+  ```sh
+    convert *.png +append horizontal-image.png
+  ```
+
+- Vertically append images
+
+  ```sh
+    convert *.png -append vertical-image.png
+  ```
+
+- Create image with white background
+
+  ```sh
+  convert -size 32x32 xc:white empty.jpg
+  ```
