@@ -25,9 +25,10 @@
     - [Docker in Docker (dind)](#docker-in-docker-dind)
   - [System Services](#system-services)
   - [Parallel](#parallel)
-  - [Yum](#yum)
+  - [CentOS](#centos)
   - [Ubuntu](#ubuntu)
   - [Image Manipulation](#image-manipulation)
+  - [Misc](#misc)
 
 ## Env vars
 
@@ -433,7 +434,7 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 
   [Parallel manual](https://www.gnu.org/software/parallel/parallel_tutorial.html)
 
-## Yum
+## CentOS
 
 - [Yum Command Cheat Sheet](https://access.redhat.com/sites/default/files/attachments/rh_yum_cheatsheet_1214_jcs_print-1.pdf)
 
@@ -489,4 +490,12 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 
   ```sh
   convert -size 32x32 xc:white empty.jpg
+  ```
+
+## Misc
+
+- Add OCR text layer to PDF using [ocrmypdf](https://github.com/jbarlow83/OCRmyPDF)
+
+  ```sh
+  ocrmypdf --force-ocr input.pdf output.pdf
   ```
