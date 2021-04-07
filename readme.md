@@ -492,12 +492,17 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   convert -size 32x32 xc:white empty.jpg
   ```
 
-- Export multiple images to PDF using [img2pdf](https://gitlab.mister-muffin.de/josch/img2pdf)
+- Export multiple PNG images to PDF using [img2pdf](https://gitlab.mister-muffin.de/josch/img2pdf)
 
   ```sh
+  # Enter directory containing PNGs
   cd directory-with-images/
+
   # Remove alpha from images and convert colorspace to RGB (img2pdf does not support ICC)
   for i in *.png; convert $i -colorspace rgb -alpha off $i; end
+
+  # Merge images into PDF
+  # (Optional) Add --pagesize A4 to normalize page size
   img2pdf --output merged.pdf *.png
 
   # (Optional) To add OCR text layer, execute the following line
