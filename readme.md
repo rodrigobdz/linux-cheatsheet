@@ -243,6 +243,12 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
     echo 'Disable all swap memory temporarily'
     swapoff --all
 
+    # ATTENTION: fallocate is faster than dd but some systems require dd usage.
+    # If the fallocate command below fails, use the following instead:
+    #
+    # size=$((swap_memory_size_in_gb * 1024))
+    # sudo dd if=/dev/zero of="$swap_file_path" count=$size bs=1MiB
+    #
     echo "Create $swap_file_path of size ${swap_memory_size_in_gb}GB"
     fallocate --length "${swap_memory_size_in_gb}G" "$swap_file_path"
 
@@ -394,6 +400,7 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   You may need to install the `watch` command depending on your Linux distribution.
 
   ```sh
+  # Interval unit is seconds
   watch --interval 1 'docker ps -a'
   ```
 
@@ -408,6 +415,12 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
   ```sh
   dmesg --ctime | grep --extended-regexp --ignore-case --before-context=100 'killed process'
+  ```
+
+- Find absolute path to Docker volume in file system
+
+  ```sh
+  docker volume inspect --format '{{ .Mountpoint }}' VOLUME_NAME
   ```
 
 ### Docker in Docker (dind)
