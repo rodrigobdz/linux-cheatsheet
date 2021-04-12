@@ -272,6 +272,12 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 ## Git
 
+- Check performance metrics and recommendations for git repo using [git-sizer](https://github.com/github/git-sizer)
+
+  ```sh
+  git-sizer --verbose
+  ```
+
 - List biggest files in `.git` folder
 
   ```sh
