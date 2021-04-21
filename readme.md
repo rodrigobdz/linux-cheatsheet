@@ -540,6 +540,10 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 - Store output of time command in variable without output of argument
 
   ```sh
+  # Format output of time command
+  # Source: https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#index-TIMEFORMAT
+  TIMEFORMAT='Elapsed time in seconds: %lR'
+
   # Quoting from http://mywiki.wooledge.org/BashFAQ/032:
   #   Keep stdout untouched.
   #   The shell's original file descriptor (FD) 1 is saved in FD 3, which is inherited by the subshell.
