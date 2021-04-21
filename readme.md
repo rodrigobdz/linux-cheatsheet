@@ -28,7 +28,8 @@
   - [CentOS](#centos)
   - [Ubuntu](#ubuntu)
   - [Image Manipulation](#image-manipulation)
-  - [Misc](#misc)
+  - [Time](#time)
+  - [PDF manipulation](#pdf-manipulation)
 
 ## Env vars
 
@@ -528,7 +529,15 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   # ocrmypdf --force-ocr merged.pdf merged.pdf
   ```
 
-## Misc
+## Time
+
+- Schedule command execution at specific time and date
+
+  ```sh
+  at hh:mm
+  ```
+
+## PDF manipulation
 
 - Add OCR text layer to PDF using [ocrmypdf](https://github.com/jbarlow83/OCRmyPDF)
 
