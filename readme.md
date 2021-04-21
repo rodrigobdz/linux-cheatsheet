@@ -537,6 +537,20 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   at hh:mm
   ```
 
+- Store output of time command in variable without output of argument
+
+  ```sh
+  # Quoting from http://mywiki.wooledge.org/BashFAQ/032:
+  #   Keep stdout untouched.
+  #   The shell's original file descriptor (FD) 1 is saved in FD 3, which is inherited by the subshell.
+  #   Inside the innermost block, we send the time command's stdout to FD 3.
+  exec 3>&1
+  # Captures stderr and time.
+  elapsed_time=$( { time ls 1>&3; } 2>&1 )
+  exec 3>&-
+  echo "$elapsed_time"
+  ```
+
 ## PDF manipulation
 
 - Add OCR text layer to PDF using [ocrmypdf](https://github.com/jbarlow83/OCRmyPDF)
