@@ -273,6 +273,12 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 ## Git
 
+- Spolve merge conflict
+
+  ```sh
+  git mergetool
+  ```
+
 - Check performance metrics and recommendations for git repo using [git-sizer](https://github.com/github/git-sizer)
 
   ```sh
