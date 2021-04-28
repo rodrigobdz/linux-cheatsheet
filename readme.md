@@ -33,6 +33,7 @@
     - [Parallel](#parallel)
     - [Time](#time)
     - [Copy dirs and files](#copy-dirs-and-files)
+  - [Shell Scripting](#shell-scripting)
 
 ## OS-specific
 
@@ -616,3 +617,17 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   ```
 
   [Source](https://www.gnu.org/software/parallel/man.html#EXAMPLE:-Parallelizing-rsync)
+
+## Shell Scripting
+
+- [Bash FAQ](http://mywiki.wooledge.org/BashFAQ)
+
+- [Bash variables](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
+- Inherit shell options in subshells
+
+  ```sh
+  export SHELLOPTS
+  ```
+
+  [Example](https://stackoverflow.com/a/20832592/2227405)
+  [`SHELLOPTS` docs](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
