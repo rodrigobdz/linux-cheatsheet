@@ -7,31 +7,146 @@
 ---
 
 - [Linux Cheatsheet](#linux-cheatsheet)
-  - [Env vars](#env-vars)
-  - [Filesystem](#filesystem)
-  - [Peripherals](#peripherals)
-    - [Further Reading](#further-reading)
-  - [System Resources](#system-resources)
+  - [OS-specific](#os-specific)
+    - [CentOS](#centos)
+    - [Ubuntu](#ubuntu)
+  - [System-wide configuration](#system-wide-configuration)
+    - [System Services](#system-services)
+    - [Logs](#logs)
+    - [Networking](#networking)
+      - [SSH](#ssh)
+    - [Env vars](#env-vars)
+    - [Filesystem](#filesystem)
+    - [Peripherals](#peripherals)
+      - [Further Reading](#further-reading)
     - [Default editor](#default-editor)
     - [Disk Space](#disk-space)
     - [RAM](#ram)
     - [Swap Memory](#swap-memory)
+  - [User-specific configuration](#user-specific-configuration)
   - [Git](#git)
-  - [Networking](#networking)
-    - [SSH](#ssh)
-  - [User configuration](#user-configuration)
-  - [Logs](#logs)
   - [Docker](#docker)
-    - [Docker in Docker (dind)](#docker-in-docker-dind)
-  - [System Services](#system-services)
-  - [Parallel](#parallel)
-  - [CentOS](#centos)
-  - [Ubuntu](#ubuntu)
+    - [Docker in Docker (DinD)](#docker-in-docker-dind)
   - [Image Manipulation](#image-manipulation)
-  - [Time](#time)
   - [PDF manipulation](#pdf-manipulation)
+  - [Optimization](#optimization)
+    - [Parallel](#parallel)
+    - [Time](#time)
+    - [Copy dirs and files](#copy-dirs-and-files)
 
-## Env vars
+## OS-specific
+
+### CentOS
+
+- [Yum Command Cheat Sheet](https://access.redhat.com/sites/default/files/attachments/rh_yum_cheatsheet_1214_jcs_print-1.pdf)
+
+### Ubuntu
+
+- Unattended reboot
+
+  ```sh
+  sudo editor /etc/gdm3/custom.conf
+
+  # Uncomment the following lines and change user1 to the value of $USER:
+  #   AutomaticLoginEnable = true
+  #   AutomaticLogin = user1
+  ```
+
+- [Debian Unattended Upgrades](https://wiki.debian.org/UnattendedUpgrades)
+- Reinstall Unity on Ubuntu
+
+  ```sh
+  sudo apt-get update
+  sudo apt-get install --reinstall ubuntu-desktop
+  sudo apt-get install --reinstall unity
+  ```
+
+- Fix `mesg: ttyname failed: Inappropriate ioctl for device`
+
+  Comment out `mesg n || true` in `/root/.profile`:
+
+  ```sh
+  # mesg n || true
+  test -t 0 && mesg n
+  ```
+
+  [Source](https://superuser.com/a/1277604)
+
+## System-wide configuration
+
+### System Services
+
+- Print service definition
+
+  ```sh
+  systemctl cat SERVICE_NAME.service
+  ```
+
+### Logs
+
+- Recover logs from failed `/etc/fstab` during boot
+
+  - Search by **date**
+
+    ```sh
+    journalctl --since today
+    ```
+
+  - Search by **keyword**
+
+    ```sh
+    grep --ignore-case --regexp=KEYWORD --files-with-matches --dereference-recursive /var/log 2> /dev/null
+    ```
+
+  - Search by **file**
+
+    ```sh
+    journalctl --file /var/log/FILENAME.journal
+    ```
+
+### Networking
+
+- Connect to network on interface `eth0` on boot
+
+  ```sh
+  sudo systemctl status network
+  sudo editor /etc/sysconfig/network-scripts/ifcfg-eth0
+  # Set ONBOOT=yes for desired network
+  ```
+
+- Set DNS server
+
+  ```sh
+  editor /etc/resolv.conf
+  # Add DNS server
+  #   Example:
+  #     nameserver 8.8.8.8
+  ```
+
+  [Source](https://developers.google.com/speed/public-dns/docs/using)
+
+- List kernel routing tables
+
+  ```sh
+  route --numeric
+  ```
+
+#### SSH
+
+- Regenerate remote host identification entry in `known_hosts` file
+
+  ```sh
+  ssh-keygen -f "~/.ssh/known_hosts" -R <IP_ADDRESS>
+  ```
+
+- [SSH Message Numbers](https://www.iana.org/assignments/ssh-parameters/ssh-parameters.xhtml#ssh-parameters-1)
+
+  Examples:
+
+  > send packet: type 50
+  > receive packet: type 51
+
+### Env vars
 
 - Given a file named `example.env` with contents:
 
@@ -56,7 +171,7 @@
 
     [Source](https://unix.stackexchange.com/a/79065)
 
-## Filesystem
+### Filesystem
 
 - Filesystem Hierarchy Standard (FHS)
 
@@ -108,7 +223,7 @@
   mkdir -p $(seq 1 10)
   ```
 
-## Peripherals
+### Peripherals
 
 - Cheatsheet from `opensource.com`: [Linux commands to display your hardware information](https://opensource.com/article/19/9/linux-commands-hardware-information)
 
@@ -196,13 +311,11 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
     [Source](https://linux.die.net/man/1/usb-devices)
 
-### Further Reading
+#### Further Reading
 
 - [Interpreting the output of lsusb](https://diego.assencio.com/?index=1363692dafeabeff8e3f975077f92dfe)
 - [Find USB device details in Linux/Unix using LSUSB command](https://www.linuxnix.com/find-usb-device-details-in-linuxunix-using-lsusb-command/)
 - [USB Descriptors](https://www.beyondlogic.org/usbnutshell/usb5.shtml)
-
-## System Resources
 
 ### Default editor
 
@@ -271,6 +384,41 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 - [Recommended size of swap space](https://opensource.com/article/18/9/swap-space-linux-systems)
 
+## User-specific configuration
+
+- Set locale
+
+  > perl: warning: Setting locale failed.
+  >
+  > perl: warning: Please check that your locale settings:
+  >
+  > LANGUAGE = (unset),
+  >
+  > LC_ALL = (unset),
+  >
+  > LC_CTYPE = "UTF-8",
+  >
+  > LANG = "en_US.UTF-8"
+  >
+  > are supported and installed on your system.
+  >
+  > perl: warning: Falling back to the standard locale ("C").
+
+  Append the following lines to `~/.bashrc`:
+
+  ```sh
+  export LANGUAGE=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
+  export LC_CTYPE=en_US.UTF-8
+  ```
+
+- Preserve env when executing `sudo`
+
+  ```sh
+  sudo --preserve-env <command>
+  ```
+
 ## Git
 
 - Spolve merge conflict
@@ -307,105 +455,6 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
   [Source](https://stackoverflow.com/a/12495234/2227405)
 
-## Networking
-
-- Connect to network on interface `eth0` on boot
-
-  ```sh
-  sudo systemctl status network
-  sudo editor /etc/sysconfig/network-scripts/ifcfg-eth0
-  # Set ONBOOT=yes for desired network
-  ```
-
-- Set DNS server
-
-  ```sh
-  editor /etc/resolv.conf
-  # Add DNS server
-  #   Example:
-  #     nameserver 8.8.8.8
-  ```
-
-  [Source](https://developers.google.com/speed/public-dns/docs/using)
-
-- List kernel routing tables
-
-  ```sh
-  route --numeric
-  ```
-
-### SSH
-
-- Regenerate remote host identification entry in `known_hosts` file
-
-  ```sh
-  ssh-keygen -f "~/.ssh/known_hosts" -R <IP_ADDRESS>
-  ```
-
-- [SSH Message Numbers](https://www.iana.org/assignments/ssh-parameters/ssh-parameters.xhtml#ssh-parameters-1)
-
-  Examples:
-
-  > send packet: type 50
-  > receive packet: type 51
-
-## User configuration
-
-- Set locale
-
-  > perl: warning: Setting locale failed.
-  >
-  > perl: warning: Please check that your locale settings:
-  >
-  > LANGUAGE = (unset),
-  >
-  > LC_ALL = (unset),
-  >
-  > LC_CTYPE = "UTF-8",
-  >
-  > LANG = "en_US.UTF-8"
-  >
-  > are supported and installed on your system.
-  >
-  > perl: warning: Falling back to the standard locale ("C").
-
-  Append the following lines to `~/.bashrc`:
-
-  ```sh
-  export LANGUAGE=en_US.UTF-8
-  export LC_ALL=en_US.UTF-8
-  export LANG=en_US.UTF-8
-  export LC_CTYPE=en_US.UTF-8
-  ```
-
-- Preserve env when executing `sudo`
-
-  ```sh
-  sudo --preserve-env <command>
-  ```
-
-## Logs
-
-- Recover logs from failed `/etc/fstab` during boot
-
-  - Search by **date**
-
-    ```sh
-    journalctl --since today
-    ```
-
-  - Search by **keyword**
-
-    ```sh
-    grep --ignore-case --regexp=KEYWORD --files-with-matches --dereference-recursive /var/log 2> /dev/null
-    ```
-
-  - Search by **file**
-
-    ```sh
-    journalctl --file /var/log/FILENAME.journal
-    ```
-
 ## Docker
 
 - Watch status of Docker containers
@@ -436,65 +485,11 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   docker volume inspect --format '{{ .Mountpoint }}' VOLUME_NAME
   ```
 
-### Docker in Docker (dind)
+### Docker in Docker (DinD)
 
 The trick is to mount `/var/run/docker.sock` as a volume. The Docker container can then access Docker on the host.
 
 [Source](https://itnext.io/docker-in-docker-521958d34efd)
-
-## System Services
-
-- Print service definition
-
-  ```sh
-  systemctl cat SERVICE_NAME.service
-  ```
-
-## Parallel
-
-- Run command in parallel using GNU parallel
-
-  ```sh
-  parallel --halt-on-error now,fail=1 'set -o errexit; set -o pipefail; set -o nounset; echo {}' ::: 1 2 3'
-  ```
-
-  [Parallel manual](https://www.gnu.org/software/parallel/parallel_tutorial.html)
-
-## CentOS
-
-- [Yum Command Cheat Sheet](https://access.redhat.com/sites/default/files/attachments/rh_yum_cheatsheet_1214_jcs_print-1.pdf)
-
-## Ubuntu
-
-- Unattended reboot
-
-  ```sh
-  sudo editor /etc/gdm3/custom.conf
-
-  # Uncomment the following lines and change user1 to the value of $USER:
-  #   AutomaticLoginEnable = true
-  #   AutomaticLogin = user1
-  ```
-
-- [Debian Unattended Upgrades](https://wiki.debian.org/UnattendedUpgrades)
-- Reinstall Unity on Ubuntu
-
-  ```sh
-  sudo apt-get update
-  sudo apt-get install --reinstall ubuntu-desktop
-  sudo apt-get install --reinstall unity
-  ```
-
-- Fix `mesg: ttyname failed: Inappropriate ioctl for device`
-
-  Comment out `mesg n || true` in `/root/.profile`:
-
-  ```sh
-  # mesg n || true
-  test -t 0 && mesg n
-  ```
-
-  [Source](https://superuser.com/a/1277604)
 
 ## Image Manipulation
 
@@ -535,7 +530,35 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   # ocrmypdf --force-ocr merged.pdf merged.pdf
   ```
 
-## Time
+## PDF manipulation
+
+- Add OCR text layer to PDF using [ocrmypdf](https://github.com/jbarlow83/OCRmyPDF)
+
+  ```sh
+  ocrmypdf --force-ocr input.pdf output.pdf
+  ```
+
+- Merge PDFs
+
+  ```sh
+  "/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py" -o merged.pdf *.pdf
+  ```
+
+  [Source](https://apple.stackexchange.com/a/230447)
+
+## Optimization
+
+### Parallel
+
+- Run command in parallel using GNU parallel
+
+  ```sh
+  parallel --halt-on-error now,fail=1 'set -o errexit; set -o pipefail; set -o nounset; echo {}' ::: 1 2 3'
+  ```
+
+  [Parallel manual](https://www.gnu.org/software/parallel/parallel_tutorial.html)
+
+### Time
 
 - Schedule command execution at specific time and date
 
@@ -561,18 +584,27 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   echo "$elapsed_time"
   ```
 
-## PDF manipulation
+### Copy dirs and files
 
-- Add OCR text layer to PDF using [ocrmypdf](https://github.com/jbarlow83/OCRmyPDF)
-
-  ```sh
-  ocrmypdf --force-ocr input.pdf output.pdf
-  ```
-
-- Merge PDFs
+- Tansfer large files efficiently
 
   ```sh
-  "/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py" -o merged.pdf *.pdf
+  # Options
+  # WARNING: Add --compress to RSYNC_OPTS only if transferring over a slow connection.
+  # For local transfers --compress actually slows down the operation
+  readonly RSYNC_OPTS=(--hard-links --archive --relative --partial '--info=progress2' --human-readable)
+  readonly RSYNC_EXCLUDES=(--exclude=archive
+    --exclude=.git
+    --exclude=.gitignore
+    --exclude=.idea
+    --exclude=.vagrant
+    --exclude=__pycache__
+    --exclude=*.swp
+    --exclude=.vscode)
+    # 0 jobs in parallel translates to as many as possible
+    readonly NUMBER_OF_JOBS=0
+
+  cd src-dir && find . | parallel --jobs "$NUMBER_OF_JOBS" --halt-on-error now,fail=1 -X rsync "${RSYNC_OPTS[@]}" "${RSYNC_EXCLUDES[@]}" ./{} dest-dir/
   ```
 
-  [Source](https://apple.stackexchange.com/a/230447)
+  [Source](https://www.gnu.org/software/parallel/man.html#EXAMPLE:-Parallelizing-rsync)
