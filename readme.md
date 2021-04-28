@@ -622,6 +622,8 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 
 - [Bash FAQ](http://mywiki.wooledge.org/BashFAQ)
 
+- [Bash Study Guide](https://fvue.nl/wiki/Bash)
+
 - [Bash variables](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
 - Inherit shell options in subshells
 
