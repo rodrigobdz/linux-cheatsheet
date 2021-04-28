@@ -586,6 +586,14 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 
 ### Copy dirs and files
 
+- Display overall progress in rsync
+
+  ```sh
+  # Use rsync options --info=progress2 and --no-inc-recursive
+  # Example:
+  cd /tmp/bar && find . -type -f | parallel --halt-on-error now,fail=1 -X rsync --relative--no-inc-recursive --info=progress2 --human-readable './{}' /tmp/bar/ ; }
+  ```
+
 - Tansfer large files efficiently
 
   ```sh
@@ -604,7 +612,7 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
     # 0 jobs in parallel translates to as many as possible
     readonly NUMBER_OF_JOBS=0
 
-  cd src-dir && find . | parallel --jobs "$NUMBER_OF_JOBS" --halt-on-error now,fail=1 -X rsync "${RSYNC_OPTS[@]}" "${RSYNC_EXCLUDES[@]}" ./{} dest-dir/
+  cd src-dir && find . -type f | parallel --jobs "$NUMBER_OF_JOBS" --halt-on-error now,fail=1 -X rsync "${RSYNC_OPTS[@]}" "${RSYNC_EXCLUDES[@]}" ./{} dest-dir/
   ```
 
   [Source](https://www.gnu.org/software/parallel/man.html#EXAMPLE:-Parallelizing-rsync)
