@@ -639,7 +639,8 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   ```sh
   declare conditional_rename=()
   if [ true ]; then
-    conditional_rename=(--before-context=3)
+    # Including value of variable in case it's not empty
+    conditional_rename=("${conditional_rename[@]}" --before-context=3)
   fi
 
   # Converts to grep --before-context=3 'sh' readme.md
