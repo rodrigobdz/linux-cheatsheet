@@ -633,3 +633,15 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 
   [Example](https://stackoverflow.com/a/20832592/2227405)
   [`SHELLOPTS` docs](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
+
+- Conditionally pass arguments to command
+
+  ```sh
+  declare conditional_rename=()
+  if [ true ]; then
+    conditional_rename=(--before-context=3)
+  fi
+
+  # Converts to grep --before-context=3 'sh' readme.md
+  grep "${conditional_rename[@]}" 'sh' readme.md
+  ```
