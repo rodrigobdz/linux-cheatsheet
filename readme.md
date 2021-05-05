@@ -422,7 +422,11 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 ## Git
 
-- Spolve merge conflict
+- Improve performance of `git clone`
+
+  Read GitHub's [performance comparison](https://github.blog/2020-12-22-git-clone-a-data-driven-study-on-cloning-behaviors/) for `git clone` and [introduction to shallow and partial clone](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/#:~:text=git%20clone%20%2D%2Dfilter%3Dtree,need%20access%20to%20commit%20history.)
+
+- Solve merge conflict
 
   ```sh
   git mergetool
