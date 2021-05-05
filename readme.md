@@ -585,6 +585,8 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   echo "$elapsed_time"
   ```
 
+  [Source](http://mywiki.wooledge.org/BashFAQ/032)
+
 ### Copy dirs and files
 
 - Display overall progress in rsync
