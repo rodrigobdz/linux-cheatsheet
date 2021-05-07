@@ -36,6 +36,7 @@
     - [Time](#time)
     - [Copy dirs and files](#copy-dirs-and-files)
   - [Shell Scripting](#shell-scripting)
+  - [Related Projects](#related-projects)
 
 ## OS-specific
 
@@ -676,3 +677,7 @@ can then access Docker on the host.
   # Converts to grep --before-context=3 'sh' readme.md
   grep "${conditional_rename[@]}" 'sh' readme.md
   ```
+
+## Related Projects
+
+- [macos-cheatsheet](https://github.com/rodrigobdz/macos-cheatsheet)
