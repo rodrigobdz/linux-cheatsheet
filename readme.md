@@ -1,8 +1,10 @@
 # Linux Cheatsheet
 
-**Highly recommended:** [tldr-pages/tldr](https://github.com/tldr-pages/tldr) ([website](https://tldr.sh))
+**Highly recommended:** [tldr-pages/tldr](https://github.com/tldr-pages/tldr)
+([website](https://tldr.sh))
 
-> collection of community-maintained help pages for command-line tools, that aims to be a simpler, more approachable complement to traditional man pages.
+> collection of community-maintained help pages for command-line tools, that
+> aims to be a simpler, more approachable complement to traditional man pages.
 
 ---
 
@@ -39,7 +41,8 @@
 
 ### CentOS
 
-- [Yum Command Cheat Sheet](https://access.redhat.com/sites/default/files/attachments/rh_yum_cheatsheet_1214_jcs_print-1.pdf)
+- [Yum Command Cheat
+  Sheet](https://access.redhat.com/sites/default/files/attachments/rh_yum_cheatsheet_1214_jcs_print-1.pdf)
 
 ### Ubuntu
 
@@ -140,12 +143,12 @@
   ssh-keygen -f "~/.ssh/known_hosts" -R <IP_ADDRESS>
   ```
 
-- [SSH Message Numbers](https://www.iana.org/assignments/ssh-parameters/ssh-parameters.xhtml#ssh-parameters-1)
+- [SSH Message
+  Numbers](https://www.iana.org/assignments/ssh-parameters/ssh-parameters.xhtml#ssh-parameters-1)
 
   Examples:
 
-  > send packet: type 50
-  > receive packet: type 51
+  > send packet: type 50 receive packet: type 51
 
 ### Env vars
 
@@ -176,7 +179,9 @@
 
 - Filesystem Hierarchy Standard (FHS)
 
-  > The Filesystem Hierarchy Standard (FHS) defines the directory structure and directory contents in Linux distributions. [Source](https://en.m.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
+  > The Filesystem Hierarchy Standard (FHS) defines the directory structure and
+  > directory contents in Linux distributions.
+  > [Source](https://en.m.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
 
 ---
 
@@ -226,9 +231,11 @@
 
 ### Peripherals
 
-- Cheatsheet from `opensource.com`: [Linux commands to display your hardware information](https://opensource.com/article/19/9/linux-commands-hardware-information)
+- Cheatsheet from `opensource.com`: [Linux commands to display your hardware
+  information](https://opensource.com/article/19/9/linux-commands-hardware-information)
 
-As a general rule device shown in `/dev/sd*` are storage devices as opposed to the ones shown in `/dev/bus`.
+As a general rule device shown in `/dev/sd*` are storage devices as opposed to
+the ones shown in `/dev/bus`.
 
 - List connected system devices
 
@@ -284,7 +291,8 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
   - `usb-devices`
 
-    > usb-devices is a (bash) shell script that can be used to display details of USB buses in the system and the devices connected to them.
+    > usb-devices is a (bash) shell script that can be used to display details
+    > of USB buses in the system and the devices connected to them.
 
     ```sh
     usb-devices
@@ -294,7 +302,8 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
   - `lsusb`
 
-    > lsusb is a utility for displaying information about USB buses in the system and the devices connected to them
+    > lsusb is a utility for displaying information about USB buses in the
+    > system and the devices connected to them
 
     ```sh
     lsusb
@@ -304,7 +313,9 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
   - `usbview`
 
-    > usbview provides a **graphical** summary of USB devices connected to the system. Detailed information may be displayed by selecting individual devices in the tree display.
+    > usbview provides a **graphical** summary of USB devices connected to the
+    > system. Detailed information may be displayed by selecting individual
+    > devices in the tree display.
 
     ```sh
     usbview
@@ -314,8 +325,10 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 #### Further Reading
 
-- [Interpreting the output of lsusb](https://diego.assencio.com/?index=1363692dafeabeff8e3f975077f92dfe)
-- [Find USB device details in Linux/Unix using LSUSB command](https://www.linuxnix.com/find-usb-device-details-in-linuxunix-using-lsusb-command/)
+- [Interpreting the output of
+  lsusb](https://diego.assencio.com/?index=1363692dafeabeff8e3f975077f92dfe)
+- [Find USB device details in Linux/Unix using LSUSB
+  command](https://www.linuxnix.com/find-usb-device-details-in-linuxunix-using-lsusb-command/)
 - [USB Descriptors](https://www.beyondlogic.org/usbnutshell/usb5.shtml)
 
 ### Default editor
@@ -383,7 +396,8 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   configure_swap_memory '/swapfile' 8
   ```
 
-- [Recommended size of swap space](https://opensource.com/article/18/9/swap-space-linux-systems)
+- [Recommended size of swap
+  space](https://opensource.com/article/18/9/swap-space-linux-systems)
 
 ## User-specific configuration
 
@@ -424,7 +438,10 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 - Improve performance of `git clone`
 
-  Read GitHub's [performance comparison](https://github.blog/2020-12-22-git-clone-a-data-driven-study-on-cloning-behaviors/) for `git clone` and [introduction to shallow and partial clone](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/#:~:text=git%20clone%20%2D%2Dfilter%3Dtree,need%20access%20to%20commit%20history.)
+  Read GitHub's [performance
+  comparison](https://github.blog/2020-12-22-git-clone-a-data-driven-study-on-cloning-behaviors/)
+  for `git clone` and [introduction to shallow and partial
+  clone](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/#:~:text=git%20clone%20%2D%2Dfilter%3Dtree,need%20access%20to%20commit%20history.)
 
 - Solve merge conflict
 
@@ -432,7 +449,8 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   git mergetool
   ```
 
-- Check performance metrics and recommendations for git repo using [git-sizer](https://github.com/github/git-sizer)
+- Check performance metrics and recommendations for git repo using
+  [git-sizer](https://github.com/github/git-sizer)
 
   ```sh
   git-sizer --verbose
@@ -464,7 +482,8 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 - Watch status of Docker containers
 
-  You may need to install the `watch` command depending on your Linux distribution.
+  You may need to install the `watch` command depending on your Linux
+  distribution.
 
   ```sh
   # Interval unit is seconds
@@ -492,7 +511,8 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 ### Docker in Docker (DinD)
 
-The trick is to mount `/var/run/docker.sock` as a volume. The Docker container can then access Docker on the host.
+The trick is to mount `/var/run/docker.sock` as a volume. The Docker container
+can then access Docker on the host.
 
 [Source](https://itnext.io/docker-in-docker-521958d34efd)
 
@@ -518,7 +538,8 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   convert -size 32x32 xc:white empty.jpg
   ```
 
-- Export multiple PNG images to PDF using [img2pdf](https://gitlab.mister-muffin.de/josch/img2pdf)
+- Export multiple PNG images to PDF using
+  [img2pdf](https://gitlab.mister-muffin.de/josch/img2pdf)
 
   ```sh
   # Enter directory containing PNGs
@@ -537,7 +558,8 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 
 ## PDF manipulation
 
-- Add OCR text layer to PDF using [ocrmypdf](https://github.com/jbarlow83/OCRmyPDF)
+- Add OCR text layer to PDF using
+  [ocrmypdf](https://github.com/jbarlow83/OCRmyPDF)
 
   ```sh
   ocrmypdf --force-ocr input.pdf output.pdf
@@ -561,7 +583,8 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
   parallel --halt-on-error now,fail=1 'set -o errexit; set -o pipefail; set -o nounset; echo {}' ::: 1 2 3'
   ```
 
-  [Parallel manual](https://www.gnu.org/software/parallel/parallel_tutorial.html)
+  [Parallel
+  manual](https://www.gnu.org/software/parallel/parallel_tutorial.html)
 
 ### Time
 
@@ -630,15 +653,16 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 
 - [Bash Study Guide](https://fvue.nl/wiki/Bash)
 
-- [Bash variables](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
+- [Bash
+  variables](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
 - Inherit shell options in subshells
 
   ```sh
   export SHELLOPTS
   ```
 
-  [Example](https://stackoverflow.com/a/20832592/2227405)
-  [`SHELLOPTS` docs](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
+  [Example](https://stackoverflow.com/a/20832592/2227405) [`SHELLOPTS`
+  docs](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
 
 - Conditionally pass arguments to command
 
