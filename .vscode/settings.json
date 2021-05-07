@@ -3,24 +3,6 @@
   "editor.formatOnPaste": false,
   "editor.formatOnType": false,
   "editor.tabSize": 2,
-  "javascript.preferences.quoteStyle": "single",
-  "typescript.preferences.quoteStyle": "single",
-  "yaml.format.singleQuote": false,
-  "prettier.singleQuote": true,
-  "prettier.jsxSingleQuote": true,
-  "html.format.endWithNewline": true,
   "files.trimTrailingWhitespace": true,
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "files.associations": {
-    "script/**": "shellscript",
-    "*.exp": "shellscript",
-    "*.bats": "shellscript",
-    "*.lock": "ruby",
-    "Dockerfile*": "dockerfile",
-    ".lintstagedrc": "yaml",
-    "*.cf": "shellscript",
-    "Vagrantfile": "ruby"
-  }
 }
+
