@@ -1,10 +1,9 @@
 # Linux Cheatsheet
 
-**Highly recommended:** [tldr-pages/tldr](https://github.com/tldr-pages/tldr)
-([website](https://tldr.sh))
+**Highly recommended:** [tldr-pages/tldr](https://github.com/tldr-pages/tldr) ([website](https://tldr.sh))
 
-> collection of community-maintained help pages for command-line tools, that
-> aims to be a simpler, more approachable complement to traditional man pages.
+> collection of community-maintained help pages for command-line tools, that aims to be a simpler, more approachable
+> complement to traditional man pages.
 
 ---
 
@@ -144,8 +143,7 @@
   ssh-keygen -f "~/.ssh/known_hosts" -R <IP_ADDRESS>
   ```
 
-- [SSH Message
-  Numbers](https://www.iana.org/assignments/ssh-parameters/ssh-parameters.xhtml#ssh-parameters-1)
+- [SSH Message Numbers](https://www.iana.org/assignments/ssh-parameters/ssh-parameters.xhtml#ssh-parameters-1)
 
   Examples:
 
@@ -180,9 +178,8 @@
 
 - Filesystem Hierarchy Standard (FHS)
 
-  > The Filesystem Hierarchy Standard (FHS) defines the directory structure and
-  > directory contents in Linux distributions.
-  > [Source](https://en.m.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
+  > The Filesystem Hierarchy Standard (FHS) defines the directory structure and directory contents in Linux
+  > distributions. [Source](https://en.m.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
 
 ---
 
@@ -235,8 +232,7 @@
 - Cheatsheet from `opensource.com`: [Linux commands to display your hardware
   information](https://opensource.com/article/19/9/linux-commands-hardware-information)
 
-As a general rule device shown in `/dev/sd*` are storage devices as opposed to
-the ones shown in `/dev/bus`.
+As a general rule device shown in `/dev/sd*` are storage devices as opposed to the ones shown in `/dev/bus`.
 
 - List connected system devices
 
@@ -292,8 +288,8 @@ the ones shown in `/dev/bus`.
 
   - `usb-devices`
 
-    > usb-devices is a (bash) shell script that can be used to display details
-    > of USB buses in the system and the devices connected to them.
+    > usb-devices is a (bash) shell script that can be used to display details of USB buses in the system and the
+    > devices connected to them.
 
     ```sh
     usb-devices
@@ -303,8 +299,7 @@ the ones shown in `/dev/bus`.
 
   - `lsusb`
 
-    > lsusb is a utility for displaying information about USB buses in the
-    > system and the devices connected to them
+    > lsusb is a utility for displaying information about USB buses in the system and the devices connected to them
 
     ```sh
     lsusb
@@ -314,9 +309,8 @@ the ones shown in `/dev/bus`.
 
   - `usbview`
 
-    > usbview provides a **graphical** summary of USB devices connected to the
-    > system. Detailed information may be displayed by selecting individual
-    > devices in the tree display.
+    > usbview provides a **graphical** summary of USB devices connected to the system. Detailed information may be
+    > displayed by selecting individual devices in the tree display.
 
     ```sh
     usbview
@@ -326,8 +320,7 @@ the ones shown in `/dev/bus`.
 
 #### Further Reading
 
-- [Interpreting the output of
-  lsusb](https://diego.assencio.com/?index=1363692dafeabeff8e3f975077f92dfe)
+- [Interpreting the output of lsusb](https://diego.assencio.com/?index=1363692dafeabeff8e3f975077f92dfe)
 - [Find USB device details in Linux/Unix using LSUSB
   command](https://www.linuxnix.com/find-usb-device-details-in-linuxunix-using-lsusb-command/)
 - [USB Descriptors](https://www.beyondlogic.org/usbnutshell/usb5.shtml)
@@ -397,12 +390,13 @@ the ones shown in `/dev/bus`.
   configure_swap_memory '/swapfile' 8
   ```
 
-- [Recommended size of swap
-  space](https://opensource.com/article/18/9/swap-space-linux-systems)
+- [Recommended size of swap space](https://opensource.com/article/18/9/swap-space-linux-systems)
 
 ## User-specific configuration
 
 - Set locale
+
+  Follow the instructions below to fix the following warnings:
 
   > perl: warning: Setting locale failed.
   >
@@ -435,13 +429,32 @@ the ones shown in `/dev/bus`.
   sudo --preserve-env <command>
   ```
 
+- Print non-root username
+
+  ```sh
+  # Returns name of user with UID 1000 (defaults to non-root user)
+  uid=1000
+  getent passwd "$uid" | cut -d: -f1
+  ```
+
+  [Source](https://unix.stackexchange.com/a/36582)
+
+  Alternatively:
+
+  ```sh
+  # "SUDO_USER Set to the login name of the user who invoked sudo."
+  echo $SUDO_USER
+  ```
+
+  [Source](https://man7.org/linux/man-pages/man8/sudo.8.html)
+
 ## Git
 
 - Improve performance of `git clone`
 
   Read GitHub's [performance
-  comparison](https://github.blog/2020-12-22-git-clone-a-data-driven-study-on-cloning-behaviors/)
-  for `git clone` and [introduction to shallow and partial
+  comparison](https://github.blog/2020-12-22-git-clone-a-data-driven-study-on-cloning-behaviors/) for `git clone` and
+  [introduction to shallow and partial
   clone](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/#:~:text=git%20clone%20%2D%2Dfilter%3Dtree,need%20access%20to%20commit%20history.)
 
 - Solve merge conflict
@@ -450,8 +463,7 @@ the ones shown in `/dev/bus`.
   git mergetool
   ```
 
-- Check performance metrics and recommendations for git repo using
-  [git-sizer](https://github.com/github/git-sizer)
+- Check performance metrics and recommendations for git repo using [git-sizer](https://github.com/github/git-sizer)
 
   ```sh
   git-sizer --verbose
@@ -483,8 +495,7 @@ the ones shown in `/dev/bus`.
 
 - Watch status of Docker containers
 
-  You may need to install the `watch` command depending on your Linux
-  distribution.
+  You may need to install the `watch` command depending on your Linux distribution.
 
   ```sh
   # Interval unit is seconds
@@ -512,8 +523,7 @@ the ones shown in `/dev/bus`.
 
 ### Docker in Docker (DinD)
 
-The trick is to mount `/var/run/docker.sock` as a volume. The Docker container
-can then access Docker on the host.
+The trick is to mount `/var/run/docker.sock` as a volume. The Docker container can then access Docker on the host.
 
 [Source](https://itnext.io/docker-in-docker-521958d34efd)
 
@@ -539,8 +549,7 @@ can then access Docker on the host.
   convert -size 32x32 xc:white empty.jpg
   ```
 
-- Export multiple PNG images to PDF using
-  [img2pdf](https://gitlab.mister-muffin.de/josch/img2pdf)
+- Export multiple PNG images to PDF using [img2pdf](https://gitlab.mister-muffin.de/josch/img2pdf)
 
   ```sh
   # Enter directory containing PNGs
@@ -559,8 +568,7 @@ can then access Docker on the host.
 
 ## PDF manipulation
 
-- Add OCR text layer to PDF using
-  [ocrmypdf](https://github.com/jbarlow83/OCRmyPDF)
+- Add OCR text layer to PDF using [ocrmypdf](https://github.com/jbarlow83/OCRmyPDF)
 
   ```sh
   ocrmypdf --force-ocr input.pdf output.pdf
@@ -584,8 +592,7 @@ can then access Docker on the host.
   parallel --halt-on-error now,fail=1 'set -o errexit; set -o pipefail; set -o nounset; echo {}' ::: 1 2 3'
   ```
 
-  [Parallel
-  manual](https://www.gnu.org/software/parallel/parallel_tutorial.html)
+  [Parallel manual](https://www.gnu.org/software/parallel/parallel_tutorial.html)
 
 ### Time
 
@@ -654,8 +661,7 @@ can then access Docker on the host.
 
 - [Bash Study Guide](https://fvue.nl/wiki/Bash)
 
-- [Bash
-  variables](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
+- [Bash variables](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
 - Inherit shell options in subshells
 
   ```sh
