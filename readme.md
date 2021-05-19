@@ -518,6 +518,14 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   gpg --delete-key <key-ID>
   ```
 
+- Renew expired yarn GPG key
+
+  ```sh
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  ```
+
+  [Source](https://github.com/yarnpkg/yarn/issues/7866#issue-558663837)
+
 ## Docker
 
 - Watch status of Docker containers
