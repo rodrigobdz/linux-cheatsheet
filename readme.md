@@ -500,6 +500,15 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   gpg --list-secret-keys --keyid-format LONG
   ```
 
+- Generate a new GPG key pair
+
+  ```sh
+  gpg --full-generate-key
+  # Follow instructions from link below
+  ```
+
+  [Source](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-gpg-key)
+
 - Delete GPG key pair
 
   ```sh
