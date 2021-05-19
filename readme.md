@@ -26,6 +26,7 @@
     - [Swap Memory](#swap-memory)
   - [User-specific configuration](#user-specific-configuration)
   - [Git](#git)
+  - [GPG](#gpg)
   - [Docker](#docker)
     - [Docker in Docker (DinD)](#docker-in-docker-dind)
   - [Image Manipulation](#image-manipulation)
@@ -490,6 +491,23 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   ```
 
   [Source](https://stackoverflow.com/a/12495234/2227405)
+
+## GPG
+
+- List all keys in long-format
+
+  ```sh
+  gpg --list-secret-keys --keyid-format LONG
+  ```
+
+- Delete GPG key pair
+
+  ```sh
+  # Delete secret key
+  gpg --delete-secret-key <key-ID>
+  # Delete public key
+  gpg --delete-key <key-ID>
+  ```
 
 ## Docker
 
