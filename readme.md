@@ -556,6 +556,13 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
   docker volume inspect --format '{{ .Mountpoint }}' VOLUME_NAME
   ```
 
+- Search local Docker images by name
+
+  ```sh
+  # Replace placeholder IMAGENAME by Docker image name you are searching for
+  docker images '*IMAGENAME*'
+  ```
+
 ### Docker in Docker (DinD)
 
 The trick is to mount `/var/run/docker.sock` as a volume. The Docker container can then access Docker on the host.
