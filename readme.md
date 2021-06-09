@@ -451,6 +451,34 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 ## Git
 
+- Rename local and remote branch
+
+  ```sh
+  # Placeholders: old_name new_name
+
+  # If old_name not checked out already
+  git checkout old_name
+
+  # Rename local branch
+  git branch -m old_name new_name
+
+  # Delete old_name remote branch and push new_name local branch
+  git push origin :old_name new_name
+
+  # Reset upstream branch fo new_name local branch
+  git push origin --set-upstream new_name
+  ```
+
+  [Source](https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name/45561865#45561865)
+
+- List changed files on branch with regard to main branch
+
+  ```sh
+  git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD main)
+  ```
+
+  [Source](https://stackoverflow.com/questions/25071579/list-all-files-changed-in-a-pull-request-in-git-github/25071749#25071749)
+
 - Improve performance of `git clone`
 
   Read GitHub's [performance
