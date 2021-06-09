@@ -699,6 +699,12 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 
 ## Shell Scripting
 
+- Robust and [portable](https://www.cyberciti.biz/tips/finding-bash-perl-python-portably-using-env.html) shebang
+
+  ```sh
+  #!/usr/bin/env bash
+  ```
+
 - [Bash FAQ](http://mywiki.wooledge.org/BashFAQ)
 
 - [Bash Study Guide](https://fvue.nl/wiki/Bash)
