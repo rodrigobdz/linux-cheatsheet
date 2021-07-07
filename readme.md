@@ -451,6 +451,15 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 ## Git
 
+- Delete local and remote tag
+
+  ```sh
+  # Delete local tag
+  git tag --delete <TAG_NAME>
+  # Delete remote tag
+  git push --delete origin <TAG_NAME>
+  ```
+
 - Rename local and remote branch
 
   ```sh
