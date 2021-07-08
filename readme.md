@@ -736,10 +736,33 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 
 ## Shell Scripting
 
-- Robust and [portable](https://www.cyberciti.biz/tips/finding-bash-perl-python-portably-using-env.html) shebang
+- Script template:
+
+  - Robust and [portable](https://www.cyberciti.biz/tips/finding-bash-perl-python-portably-using-env.html) shebang
+  - Recommended bash/shell options for scripts
+  - Inherit shell options in subshells
+
+    [Example](https://stackoverflow.com/a/20832592/2227405) [`SHELLOPTS`
+    docs](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
 
   ```sh
   #!/usr/bin/env bash
+  #
+  # Script description
+
+  # Bash options
+  # Inherit errexit in subshells (requires Bash 4.4+)
+  shopt -s inherit_errexit
+
+  # Shell options
+  set -o errexit
+  set -o pipefail
+  set -o nounset
+
+  # Export enabled shell options to subshells
+  # Documentation:
+  # https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html
+  export SHELLOPTS
   ```
 
 - [Bash FAQ](http://mywiki.wooledge.org/BashFAQ)
@@ -747,14 +770,6 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 - [Bash Study Guide](https://fvue.nl/wiki/Bash)
 
 - [Bash variables](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
-- Inherit shell options in subshells
-
-  ```sh
-  export SHELLOPTS
-  ```
-
-  [Example](https://stackoverflow.com/a/20832592/2227405) [`SHELLOPTS`
-  docs](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html)
 
 - Conditionally pass arguments to command
 
