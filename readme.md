@@ -787,3 +787,4 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 ## Related Projects
 
 - [macos-cheatsheet](https://github.com/rodrigobdz/macos-cheatsheet)
+- [modern-unix](https://github.com/ibraheemdev/modern-unix)
