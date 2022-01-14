@@ -628,6 +628,8 @@ exit
 
 # Commit the image, i.e., create a new image from the container’s changes
 docker commit "$container_name" "$image_name"
+
+docker stop "$container_name"
 ```
 
 ## Image Manipulation
