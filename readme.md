@@ -609,7 +609,7 @@ The trick is to mount `/var/run/docker.sock` as a volume. The Docker container c
 
 ### Update a Docker image
 
-The following image uses the image `my_image:14.04` as placeholders.
+The following image uses the image `my_image:14.04` as a placeholder.
 
 ```sh
 # Replace placeholder image_name with the name of the image you want to update
