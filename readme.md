@@ -29,6 +29,7 @@
   - [GPG](#gpg)
   - [Docker](#docker)
     - [Docker in Docker (DinD)](#docker-in-docker-dind)
+    - [Update a Docker image](#update-a-docker-image)
   - [Image Manipulation](#image-manipulation)
   - [PDF manipulation](#pdf-manipulation)
   - [Optimization](#optimization)
@@ -605,6 +606,29 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 The trick is to mount `/var/run/docker.sock` as a volume. The Docker container can then access Docker on the host.
 
 [Source](https://itnext.io/docker-in-docker-521958d34efd)
+
+### Update a Docker image
+
+The following image uses the image `my_image:14.04` as placeholders.
+
+```sh
+# Replace placeholder image_name with the name of the image you want to update
+image_name=my_image:my_tag
+container_name=update-image-container
+
+# Start a container with the image to update
+docker run --rm --tty --detach --name "$container_name" "$image_name"
+
+# Log into the image to update it
+docker exec --interactive --tty "$container_name" bash
+# Update the image (the following command is executed inside the image). Example:
+touch /tmp/new_file.txt
+# Exit the image
+exit
+
+# Commit the image, i.e., create a new image from the container’s changes
+docker commit "$container_name" "$image_name"
+```
 
 ## Image Manipulation
 
