@@ -682,10 +682,8 @@ docker stop "$container_name"
 - Merge PDFs
 
   ```sh
-  "/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py" -o merged.pdf *.pdf
+  pdfunite in-1.pdf in-2.pdf out.pdf
   ```
-
-  [Source](https://apple.stackexchange.com/a/230447)
 
 - Reduce PDF file size
 
