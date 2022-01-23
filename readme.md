@@ -687,6 +687,20 @@ docker stop "$container_name"
 
   [Source](https://apple.stackexchange.com/a/230447)
 
+- Reduce PDF file size
+
+  Requires [`gs`](https://www.ghostscript.com/) and [`shrinkpdf`](http://www.alfredklomp.com/programming/shrinkpdf/) installation
+
+  ```sh
+  shrinkpdf in.pdf out.pdf
+  ```
+
+- Search for text in PDF using [pdfgrep](https://pdfgrep.org/)
+
+  ```sh
+  pdfgrep pattern file.pdf
+  ```
+
 ## Optimization
 
 ### Parallel
