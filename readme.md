@@ -36,6 +36,7 @@
     - [Parallel](#parallel)
     - [Time](#time)
     - [Copy dirs and files](#copy-dirs-and-files)
+  - [String manipulation](#string-manipulation)
   - [Shell Scripting](#shell-scripting)
   - [Related Projects](#related-projects)
 
@@ -771,6 +772,15 @@ docker stop "$container_name"
   ```
 
   [Source](https://www.gnu.org/software/parallel/man.html#EXAMPLE:-Parallelizing-rsync)
+
+## String manipulation
+
+- Replace characters in filenames found in current working directory
+
+  ```sh
+  # Replace all occurrences of underscores in filenames of files in current working directory with a hyphen
+  for f in *; do mv $f ${f//_/-}; done
+  ```
 
 ## Shell Scripting
 
