@@ -150,6 +150,13 @@
 
   [Source](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
+- Test passphrase for SSH key
+
+  ```sh
+  # -y "This option will read a private OpenSSH format file and print an OpenSSH public key to stdout."
+  ssh-keygen -y -f <your_private_ssh_key>
+  ```
+
 - Regenerate remote host identification entry in `known_hosts` file
 
   ```sh
