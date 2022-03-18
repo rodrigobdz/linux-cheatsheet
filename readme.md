@@ -140,6 +140,16 @@
 
 #### SSH
 
+- Generate SSH key
+
+  ```sh
+  # -t specifies the type of key to generate
+  # -C provides a comment for the key
+  ssh-keygen -t ed25519 -C "your_email@example.com"
+  ```
+
+  [Source](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
 - Regenerate remote host identification entry in `known_hosts` file
 
   ```sh
