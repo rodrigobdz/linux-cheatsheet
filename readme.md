@@ -672,6 +672,14 @@ docker stop "$container_name"
   convert -size 32x32 xc:white empty.jpg
   ```
 
+- Replace alpha channel with white background in all PNG images in nested directories
+
+  ```sh
+  for i in `ls -1 **/*.png`; do convert $i -background white -alpha remove -alpha off $i; done
+  ```
+
+  [Source](https://stackoverflow.com/a/52962485)
+
 - Export multiple PNG images to PDF using [img2pdf](https://gitlab.mister-muffin.de/josch/img2pdf)
 
   ```sh
