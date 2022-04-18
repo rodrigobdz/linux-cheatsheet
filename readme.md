@@ -470,6 +470,17 @@ As a general rule device shown in `/dev/sd*` are storage devices as opposed to t
 
 ## Git
 
+- Mark all subdirectories as safe in git
+
+  ```sh
+  # ls options
+  # -1 list one file per line
+  #
+  # xargs options
+  # -L max. lines
+  \ls -1 --directory $PWD/. | xargs -L 1 --delimiter='\n' git config --global --add safe.directory
+  ```
+
 - Delete local and remote tag
 
   ```sh
