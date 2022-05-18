@@ -778,6 +778,12 @@ docker stop "$container_name"
 
 ### Copy dirs and files
 
+- Base `rsync` options
+
+  ```sh
+  rsync --archive --compress --verbose --human-readable --progress [PATH] [PATH]
+  ```
+
 - Display overall progress in rsync
 
   ```sh
@@ -786,7 +792,7 @@ docker stop "$container_name"
   cd /tmp/bar && find . -type -f | parallel --halt-on-error now,fail=1 -X rsync --relative--no-inc-recursive --info=progress2 --human-readable './{}' /tmp/bar/ ; }
   ```
 
-- Tansfer large files efficiently
+- Transfer large files efficiently
 
   ```sh
   # Options
