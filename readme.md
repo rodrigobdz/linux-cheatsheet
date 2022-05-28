@@ -743,7 +743,7 @@ docker stop "$container_name"
 - Run command in parallel using GNU parallel
 
   ```sh
-  parallel --halt-on-error now,fail=1 'set -o errexit; set -o pipefail; set -o nounset; echo {}' ::: 1 2 3'
+  parallel --halt-on-error now,fail=1 'set -o errexit; set -o pipefail; set -o nounset; echo {}' ::: 1 2 3
   ```
 
   [Parallel manual](https://www.gnu.org/software/parallel/parallel_tutorial.html)
